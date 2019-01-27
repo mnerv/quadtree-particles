@@ -32,6 +32,10 @@ function draw() {
     let boundary = new Rectangle(width / 2, height / 2, width, height)
     qTree = new QuadTree(boundary, 4)
 
+    // if (selectedSim.value() !== 'randomParticle') {
+    //     selectSim.html('randomParticle')
+    // }
+
     for (let p of particles) {
         let point = new Point(p.x, p.y, p)
         qTree.insert(point)
