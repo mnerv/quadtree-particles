@@ -1,0 +1,185 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body * {
+    font-family: 'Major Mono Display', monospace;
+}
+
+canvas {
+    margin: auto;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+}
+
+.topright {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.displayfps {
+    padding: 5px;
+    background: #14141480;
+}
+
+.displayfps > p {
+    display: inline;
+    color: white;
+}
+
+.settingscontainer {
+    position: absolute;
+    top: 2.5em;
+    right: 5px;
+    width: 32px;
+    height: 32px;
+    /* background: #14141480; */
+    transition-timing-function: ease-in-out;
+    transition-duration: 500ms;
+}
+
+.containerImg {
+    height: 100%;
+}
+
+.controls {
+    color: white;
+    display: none;
+}
+
+.controls * {
+    margin: 0;
+    padding: 0;
+}
+
+.sectionContainer {
+    width: 100%;
+    height: 32px min-content;
+    border-bottom: 1px solid #fafafab2;
+    background: #141414af;
+}
+
+.sectionTitle {
+    padding: 10px;
+}
+
+.settingName {
+    font-size: 12px;
+}
+
+.sectionPadding {
+    padding: 10px;
+}
+
+.settingscontainer:hover {
+    width: 212px;
+    transition-duration: 125ms;
+    background: #000000e8;
+    transition-timing-function: ease-in-out;
+}
+
+.settingscontainer:hover > .containerImg {
+    display: none;
+}
+
+.settingscontainer:hover .controls {
+    display: block;
+}
+
+.customSelect {
+    width: 100%;
+    /* padding: 5px 35px 5px 10px; */
+    padding: 10px;
+    /* margin-left: 10px; */
+    border: none;
+    height: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* background: url(http://www.stackoverflow.com/favicon.ico) 96% / 15%
+        no-repeat #eee; */
+    background: #141414;
+    color: white;
+}
+
+.noHighlight {
+    background: #000000e8;
+}
+
+.customSelect:hover {
+    background: #2e2e2e;
+}
+
+.sectionContainer:hover {
+    background: #2e2e2e;
+    border-bottom: 1px solid #ffffffb2;
+}
+
+.noHighlight:hover {
+    background: #000000e8;
+}
+
+/* CAUTION: IE hackery ahead */
+.customSelect::-ms-expand {
+    display: none; /* remove default arrow on ie10 and ie11 */
+}
+
+/* target Internet Explorer 9 to undo the custom arrow */
+@media screen and (min-width: 0\0) {
+    .customSelect {
+        background: none\9;
+        padding: 10px\9;
+    }
+}
+
+.slider {
+    -webkit-appearance: none;
+    height: 10px;
+    width: 100%;
+    border-radius: 5px;
+
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgb(66, 188, 244);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #00d0ff;
+    cursor: pointer;
+}
+
+.particleSettingContainer {
+    position: absolute;
+    bottom: 0px;
+    display: none;
+}

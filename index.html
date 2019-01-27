@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Major+Mono+Display"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="icon" href="assets/favicon.png" />
+
+        <title>quadtree-particle</title>
+
+        <script src="libraries/p5.js"></script>
+        <script src="libraries/p5.dom.js"></script>
+        <script src="libraries/p5.sound.js"></script>
+        <script src="scripts/quadtree.js"></script>
+        <script src="scripts/particle.js"></script>
+        <script src="scripts/sketch.js"></script>
+    </head>
+    <body>
+        <div class="settingscontainer">
+            <img src="assets/settingIcon.png" alt="" class="containerImg" />
+
+            <div class="controls">
+                <div
+                    class="sectionContainer noselect noHighlight"
+                    style="border:none"
+                >
+                    <p class="sectionTitle" id="settingsP">settings</p>
+                </div>
+                <div class="sectionContainer">
+                    <select class="customSelect" id="simOptions">
+                        <option value="randomParticle">Random Particle</option>
+                        <option value="flocksim">Flock Sim</option>
+                        <option value="particle">Particle</option>
+                    </select>
+                </div>
+                <div class="sectionContainer ">
+                    <div class="sectionPadding">
+                        <label for="quadTree" class="noselect settingName"
+                            >QuadTree</label
+                        >
+                        <input
+                            type="checkbox"
+                            class="checkBoxStyle"
+                            id="quadtreeValue"
+                            name="quadTree"
+                            checked
+                        />
+                    </div>
+                </div>
+                <div class="sectionContainer">
+                    <div style="display: inline">
+                        <p class="sectionTitle settingName">Particle Counts:</p>
+                        <p
+                            class="sectionTitle"
+                            id="particleCount"
+                            style="padding-top:0px"
+                        >
+                            1000
+                        </p>
+                    </div>
+                    <div class="sectionTitle" style="padding-top:0px">
+                        <input
+                            type="range"
+                            min="1"
+                            max="5000"
+                            value="1000"
+                            class="slider"
+                            id="pSliderValue"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="particleSettingContainer">
+            <input
+                type="range"
+                min="1"
+                max="100"
+                value="50"
+                class="slider"
+                id="sliderOne"
+            />
+            <input
+                type="range"
+                min="0"
+                max="100"
+                value="50"
+                class="slider"
+                id="sliderTwo"
+            />
+        </div>
+        <div class="displayfps noselect topright">
+            <p id="framerate">00</p>
+            <p>fps</p>
+        </div>
+    </body>
+</html>
