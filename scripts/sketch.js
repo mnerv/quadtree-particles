@@ -2,21 +2,21 @@ let fpslbl
 let sliderE
 let pCountLbl
 let selectedSim
-let checkQuadTree
+let withQuadTree
 
 let averagefps = 0
 let fpsOn = true
 let lastTime = 0
 
 let particles = []
-let qTree
+let qtree
 let particleCount = 100
 
 function setup() {
     createCanvas(windowWidth, windowHeight).class('noselect')
     fpslbl = select('#framerate')
     pCountLbl = select('#particleCount')
-    checkQuadTree = select('#quadtreeValue')
+    withQuadTree = select('#quadtreeValue')
     sliderE = select('#pSliderValue').value(particleCount)
     selectedSim = select('#simOptions').input(selectSim)
     pCountLbl.html(sliderE.value())
@@ -30,40 +30,34 @@ function draw() {
     background(27)
 
     let boundary = new Rectangle(width / 2, height / 2, width, height)
-    qTree = new QuadTree(boundary, 4)
-
-    // if (selectedSim.value() !== 'randomParticle') {
-    //     selectSim.html('randomParticle')
-    // }
+    qtree = new QuadTree(boundary, 4)
+    if (withQuadTree.checked()) {
+        for (let p of particles) {
+            let point = new Point(p.x, p.y, p)
+            qtree.insert(point)
+        }
+    }
 
     for (let p of particles) {
-        let point = new Point(p.x, p.y, p)
-        qTree.insert(point)
-
         p.setHighlight(false)
-        if (checkQuadTree.checked()) {
+        if (withQuadTree.checked()) {
             let range = new Circle(p.x, p.y, p.r * 2)
-            let points = qTree.query(range)
+            let points = qtree.query(range)
 
-            if (selectedSim.value() == 'randomParticle')
-                for (let point of points) {
-                    let other = point.userData
-                    if (p !== other) {
-                        p.intersects(other)
-                    }
+            for (let point of points) {
+                let other = point.userData
+                if (p != other) {
+                    p.intersects(other)
                 }
-            else {
-                p.flock(points)
             }
         } else {
-            if (selectedSim.value() == 'randomParticle')
-                for (const other of particles) {
-                    if (p !== other) {
-                        p.intersects(other)
+            for (let other of particles) {
+                if (p != other) {
+                    let d = dist(p.x, p.y, other.x, other.y)
+                    if (d < p.r + other.r) {
+                        p.setHighlight(true)
                     }
                 }
-            else if (selectedSim.value() == 'flocksim') {
-                p.flock(particles)
             }
         }
     }
@@ -75,6 +69,8 @@ function draw() {
 
     displayFPS()
 }
+
+function randomParticle() {}
 
 function selectSim() {
     setParticleCount()
