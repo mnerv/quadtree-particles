@@ -51,6 +51,7 @@ canvas {
 
 .containerImg {
     height: 100%;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 .controls {
@@ -76,6 +77,8 @@ canvas {
 
 .settingName {
     font-size: 12px;
+    /* margin: 5px; */
+    /* text-align: center center; */
 }
 
 .sectionPadding {
@@ -182,4 +185,45 @@ canvas {
     position: absolute;
     bottom: 0px;
     display: none;
+}
+
+.custom-checkbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    position: relative;
+    background-color: #f1f1f1;
+    color: #666;
+    /* top: 0px; */
+    height: 20px;
+    width: 20px;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    /* margin-right: 0px; */
+    margin: 0;
+    outline: none;
+
+    transition: all 0.2s;
+}
+.custom-checkbox:checked::before {
+    position: absolute;
+    font: 13px/1 'Open Sans', sans-serif;
+    left: 6px;
+    top: 3px;
+    content: '\02143';
+    transform: rotate(40deg);
+}
+
+.custom-checkbox:hover {
+    background-color: #f7f7f7;
+}
+
+.custom-checkbox:checked {
+    background-color: #f1f1f1;
+}
+
+.sectionPadding * {
+    vertical-align: middle;
 }

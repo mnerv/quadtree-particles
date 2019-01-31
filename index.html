@@ -38,14 +38,17 @@
                         <option value="particle">Particle</option> -->
                     </select>
                 </div>
-                <div class="sectionContainer ">
+                <div class="sectionContainer">
                     <div class="sectionPadding">
-                        <label for="quadTree" class="noselect settingName"
+                        <label
+                            for="quadTree"
+                            class="noselect settingName textlabel"
                             >QuadTree</label
                         >
+                        <!-- <p style="display: inline;">QuadTree</p> -->
                         <input
                             type="checkbox"
-                            class="checkBoxStyle"
+                            class="custom-checkbox"
                             id="quadtreeValue"
                             name="quadTree"
                             checked
@@ -92,6 +95,14 @@
                 value="50"
                 class="slider"
                 id="sliderTwo"
+            />
+            <input
+                type="range"
+                min="0"
+                max="100"
+                value="50"
+                class="slider"
+                id="sliderThree"
             />
         </div>
         <div class="displayfps noselect topright">
