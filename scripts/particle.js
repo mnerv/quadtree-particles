@@ -7,7 +7,7 @@ class RandomParticle {
     }
 
     update() {
-        this.edges()
+        // this.edges()
         this.x += random(-1, 1)
         this.y += random(-1, 1)
     }
@@ -22,6 +22,8 @@ class RandomParticle {
         }
 
         ellipse(this.x, this.y, this.r * 2)
+
+        this.setHighlight(false)
     }
 
     edges() {
@@ -40,12 +42,37 @@ class RandomParticle {
 
     intersects(other) {
         let d = dist(this.x, this.y, other.x, other.y)
+
         this.setHighlight(d < this.r + other.r)
+        // if (d < this.r + other.r) console.log(d)
+        // if (d < this.r + other.r) console.log('hej it works')
+        // console.log("yep  it's on")
+        // this.setHighlight(d < this.r / 2 + other.r / 2)
+        // return d < this.r + other.r
     }
 
     setHighlight(value) {
         this.highlight = value
         // if (!value) this.particleRange = this.r
+    }
+
+    calculate(points, withQT) {
+        if (withQT)
+            for (let point of points) {
+                let other = point.userData
+                if (this != other) {
+                    this.intersects(other)
+                }
+            }
+        else
+            for (let other of points) {
+                if (this != other) {
+                    let d = dist(this.x, this.y, other.x, other.y)
+                    if (d < this.r + other.r) {
+                        this.setHighlight(true)
+                    }
+                }
+            }
     }
 }
 
@@ -55,12 +82,17 @@ class Boid {
         this.velocity = p5.Vector.random2D()
         this.velocity.setMag(random(2, 4))
         this.acceleration = createVector()
-        this.maxForce = 0.03
+        this.maxForce = 0.1
         this.maxSpeed = 4
 
         this.x = this.position.x
         this.y = this.position.y
-        this.r = 50
+        this.r = 25
+
+        this.baseForce = this.maxForce
+        this.baseSpeed = this.maxSpeed
+        this.basePerception = this.r
+        // this.r = random(15, 50)
     }
 
     update() {
@@ -68,10 +100,13 @@ class Boid {
         this.position.add(this.velocity)
         this.velocity.add(this.acceleration)
         this.velocity.limit(this.maxSpeed)
+        this.x = this.position.x
+        this.y = this.position.y
     }
 
     show() {
         stroke(255)
+        fill(255)
         ellipse(this.position.x, this.position.y, 8)
     }
 
@@ -143,12 +178,16 @@ class Boid {
         this.acceleration.add(this.cohesion(boids))
     }
 
-    optimised(points, point) {
-        let tmp = []
-        for (const p of points) {
-            if (point !== p) tmp.push(p.userData)
+    calculate(boids, withQT) {
+        if (withQT) {
+            let tmp = []
+            for (const p of boids) {
+                tmp.push(p.userData)
+            }
+            this.flock(tmp)
+        } else {
+            this.flock(boids)
         }
-        this.flock(tmp)
     }
 }
 

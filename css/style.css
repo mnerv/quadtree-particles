@@ -20,6 +20,7 @@ canvas {
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome and Opera */
+    cursor: default;
 }
 
 .topright {
@@ -77,8 +78,6 @@ canvas {
 
 .settingName {
     font-size: 12px;
-    /* margin: 5px; */
-    /* text-align: center center; */
 }
 
 .sectionPadding {
@@ -122,6 +121,7 @@ canvas {
 
 .customSelect:hover {
     background: #2e2e2e;
+    cursor: pointer;
 }
 
 .sectionContainer:hover {
@@ -131,19 +131,6 @@ canvas {
 
 .noHighlight:hover {
     background: #000000e8;
-}
-
-/* CAUTION: IE hackery ahead */
-.customSelect::-ms-expand {
-    display: none; /* remove default arrow on ie10 and ie11 */
-}
-
-/* target Internet Explorer 9 to undo the custom arrow */
-@media screen and (min-width: 0\0) {
-    .customSelect {
-        background: none\9;
-        padding: 10px\9;
-    }
 }
 
 .slider {
@@ -182,9 +169,117 @@ canvas {
 }
 
 .particleSettingContainer {
+    /* display: inline; */
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 5px;
     position: absolute;
-    bottom: 0px;
-    display: none;
+    opacity: 0.35;
+    /* top: 25%; */
+    /* left: 25%; */
+    left: 10px;
+    bottom: 10px;
+    left: -295px;
+    transition-duration: 500ms;
+    transition-timing-function: ease-in-out;
+}
+
+.sliderSettingContainer {
+    /* position: absolute; */
+    position: relative;
+    color: rgb(209, 209, 209);
+    padding: 8px 10px 8px 10px;
+    background: #ffffff;
+    border-radius: 10px;
+    height: max-content;
+    bottom: 10px;
+    width: 300px;
+
+    transition-duration: 500ms;
+    transition-timing-function: ease-in-out;
+}
+
+.ptSettingName {
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    padding-bottom: 2px;
+    padding-left: 2px;
+    border-bottom: solid #b3b3b3 1px;
+    width: 70%;
+}
+
+.ptSettingName p {
+    margin: 0;
+}
+
+.leftSliderCon {
+    /* width: 75%; */
+    /* background-color: #ff6e6e; */
+}
+
+.maxValueContainer {
+    width: 35%;
+
+    /* background-color: #00d0ff; */
+}
+
+.maxValueContainer input {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.valueContainer {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+}
+
+.valueContainer p {
+    margin: 0;
+}
+
+.valueContainer .pGrid2 {
+    right: 0;
+    text-align: right;
+}
+
+/* .sliderSettingContainer {
+    left: -290px;
+    transition-duration: 500ms;
+    transition-timing-function: ease-in-out;
+}
+
+.sliderSettingContainer:hover {
+    left: -290px;
+    left: 10px;
+}
+
+.sliderSettingContainer:hover .leftSliderCon {
+    width: 100%;
+} */
+
+.particleSettingContainer:hover {
+    display: grid;
+    left: 10px;
+    opacity: 1;
+}
+
+.particleSettingContainer:hover .leftSliderCon {
+    width: 100%;
+}
+
+.particleSettingContainer:hover .sliderSettingContainer {
+    /* position: relative; */
+    background-color: #222222;
+}
+
+.leftSliderCon {
+    width: 10px;
+    transition-duration: 600ms;
+    transition-timing-function: ease-in-out;
 }
 
 .custom-checkbox {
@@ -196,8 +291,8 @@ canvas {
     background-color: #f1f1f1;
     color: #666;
     /* top: 0px; */
-    height: 20px;
-    width: 20px;
+    height: 17px;
+    width: 17px;
     border: 0;
     border-radius: 50%;
     cursor: pointer;
@@ -209,9 +304,9 @@ canvas {
 }
 .custom-checkbox:checked::before {
     position: absolute;
-    font: 13px/1 'Open Sans', sans-serif;
-    left: 6px;
-    top: 3px;
+    font: 12px/1 'Open Sans', sans-serif;
+    left: 5px;
+    top: 1px;
     content: '\02143';
     transform: rotate(40deg);
 }
@@ -226,4 +321,8 @@ canvas {
 
 .sectionPadding * {
     vertical-align: middle;
+}
+
+.hideThis {
+    display: none;
 }

@@ -34,18 +34,17 @@
                 <div class="sectionContainer">
                     <select class="customSelect" id="simOptions">
                         <option value="randomParticle">Random Particle</option>
-                        <!-- <option value="flocksim">Flock Sim</option>
-                        <option value="particle">Particle</option> -->
+                        <option value="flocksim">Flock Sim</option>
+                        <!-- <option value="particle">Particle</option> -->
                     </select>
                 </div>
-                <div class="sectionContainer">
+                <div class="sectionContainer noselect">
                     <div class="sectionPadding">
                         <label
                             for="quadTree"
                             class="noselect settingName textlabel"
                             >QuadTree</label
                         >
-                        <!-- <p style="display: inline;">QuadTree</p> -->
                         <input
                             type="checkbox"
                             class="custom-checkbox"
@@ -80,30 +79,75 @@
             </div>
         </div>
         <div class="particleSettingContainer">
-            <input
-                type="range"
-                min="1"
-                max="100"
-                value="50"
-                class="slider"
-                id="sliderOne"
-            />
-            <input
-                type="range"
-                min="0"
-                max="100"
-                value="50"
-                class="slider"
-                id="sliderTwo"
-            />
-            <input
-                type="range"
-                min="0"
-                max="100"
-                value="50"
-                class="slider"
-                id="sliderThree"
-            />
+            <div class="sliderSettingContainer" id="sliderSetting1">
+                <div class="noselect ptSettingName">
+                    <p id="setting1">settting name</p>
+                </div>
+                <div class="leftSliderCon">
+                    <div class="valueContainer noselect">
+                        <div class="pGrid1"><p id="sliderLabel1">0</p></div>
+                        <div class="pGrid2"><p>max</p></div>
+                    </div>
+                    <div class="sliderContainer">
+                        <input
+                            type="range"
+                            min="0"
+                            max="200"
+                            value="1"
+                            class="slider"
+                            id="slider1"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="sliderSettingContainer" id="sliderSetting2">
+                <div class="ptSettingName noselect">
+                    <p id="setting2">settting name</p>
+                </div>
+                <div class="leftSliderCon">
+                    <div class="valueContainer noselect">
+                        <div class="pGrid1"><p id="sliderLabel2">0</p></div>
+                        <div class="pGrid2"><p>max</p></div>
+                    </div>
+                    <div class="sliderContainer">
+                        <input
+                            type="range"
+                            min="0"
+                            max="200"
+                            value="1"
+                            class="slider"
+                            id="slider2"
+                        />
+                    </div>
+                </div>
+                <!-- <div class="maxValueContainer">
+                        <input type="text" id="maxValue" />
+                    </div> -->
+            </div>
+            <div class="sliderSettingContainer" id="sliderSetting3">
+                <div class="ptSettingName noselect">
+                    <p id="setting3">settting name</p>
+                </div>
+                <div class="leftSliderCon">
+                    <div class="valueContainer noselect">
+                        <div class="pGrid1"><p id="sliderLabel3">0</p></div>
+                        <div class="pGrid2"><p>max</p></div>
+                    </div>
+                    <div class="sliderContainer">
+                        <input
+                            type="range"
+                            min="0"
+                            max="200"
+                            value="1"
+                            class="slider"
+                            id="slider3"
+                        />
+                    </div>
+                </div>
+                <!-- <div class="maxValueContainer">
+                            <input type="text" id="maxValue" />
+                        </div> -->
+            </div>
         </div>
         <div class="displayfps noselect topright">
             <p id="framerate">00</p>
