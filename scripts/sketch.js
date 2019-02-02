@@ -50,7 +50,7 @@ function setup() {
     updateSliderValue()
 
     if (!fpsOn) select('.displayfps').hide()
-    setParticleCount()
+    selectSim()
 
     sliderE.input(setParticleCount)
 
@@ -95,6 +95,10 @@ function draw() {
 
 function selectSim() {
     setParticleCount()
+
+    if (selectedSim.value() == 'randomParticle')
+        sliderSettingContainer.addClass('hideThis')
+    else sliderSettingContainer.removeClass('hideThis')
 }
 
 function updateSliderValue() {
@@ -121,10 +125,6 @@ function setParticleCount() {
             particles.push(new Boid())
         }
     }
-
-    if (selectedSim.value() == 'randomParticle')
-        sliderSettingContainer.addClass('hideThis')
-    else sliderSettingContainer.removeClass('hideThis')
 }
 
 function displayFPS() {
