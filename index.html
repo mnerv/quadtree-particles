@@ -1,154 +1,145 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <link rel="stylesheet" href="css/style.css" />
-        <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="assets/favicon.png" />
 
-        <title>quadtree-particle</title>
+    <title>quadtree-particle</title>
 
-        <script src="libraries/p5.js"></script>
-        <script src="libraries/p5.dom.js"></script>
-        <script src="libraries/p5.sound.js"></script>
-        <script src="scripts/quadtree.js"></script>
-        <script src="scripts/particle.js"></script>
-        <script src="scripts/sketch.js"></script>
-    </head>
-    <body>
-        <div class="settingscontainer">
-            <img src="assets/settingIcon.png" alt="" class="containerImg" />
+    <script src="libraries/p5.js"></script>
+    <script src="libraries/p5.dom.js"></script>
+    <script src="libraries/p5.sound.js"></script>
+    <script src="scripts/quadtree.js"></script>
+    <script src="scripts/particle.js"></script>
+    <script src="scripts/sketch.js"></script>
+  </head>
+  <body>
+    <div class="settingscontainer">
+      <img src="assets/settingIcon.png" alt="" class="containerImg" />
 
-            <div class="controls">
-                <div
-                    class="sectionContainer noselect noHighlight"
-                    style="border:none"
-                >
-                    <p class="sectionTitle" id="settingsP">settings</p>
-                </div>
-                <div class="sectionContainer">
-                    <select class="customSelect" id="simOptions">
-                        <option value="randomParticle">Random Particle</option>
-                        <option value="flocksim">Flock Sim</option>
-                        <!-- <option value="particle">Particle</option> -->
-                    </select>
-                </div>
-                <div class="sectionContainer noselect">
-                    <div class="sectionPadding">
-                        <label
-                            for="quadTree"
-                            class="noselect settingName textlabel"
-                            >QuadTree</label
-                        >
-                        <input
-                            type="checkbox"
-                            class="custom-checkbox"
-                            id="quadtreeValue"
-                            name="quadTree"
-                            checked
-                        />
-                    </div>
-                </div>
-                <div class="sectionContainer">
-                    <div style="display: inline">
-                        <p class="sectionTitle settingName">Particle Counts:</p>
-                        <p
-                            class="sectionTitle"
-                            id="particleCount"
-                            style="padding-top:0px"
-                        >
-                            1000
-                        </p>
-                    </div>
-                    <div class="sectionTitle" style="padding-top:0px">
-                        <input
-                            type="range"
-                            min="1"
-                            max="5000"
-                            value="1000"
-                            class="slider"
-                            id="pSliderValue"
-                        />
-                    </div>
-                </div>
-            </div>
+      <div class="controls">
+        <div class="sectionContainer noselect noHighlight" style="border:none">
+          <p class="sectionTitle" id="settingsP">settings</p>
         </div>
-        <div class="particleSettingContainer">
-            <div class="sliderSettingContainer" id="sliderSetting1">
-                <div class="noselect ptSettingName">
-                    <p id="setting1">settting name</p>
-                </div>
-                <div class="leftSliderCon">
-                    <div class="valueContainer noselect">
-                        <div class="pGrid1"><p id="sliderLabel1">0</p></div>
-                        <div class="pGrid2"><p>max</p></div>
-                    </div>
-                    <div class="sliderContainer">
-                        <input
-                            type="range"
-                            min="0"
-                            max="200"
-                            value="1"
-                            class="slider"
-                            id="slider1"
-                        />
-                    </div>
-                </div>
-            </div>
-            <div class="sliderSettingContainer" id="sliderSetting2">
-                <div class="ptSettingName noselect">
-                    <p id="setting2">settting name</p>
-                </div>
-                <div class="leftSliderCon">
-                    <div class="valueContainer noselect">
-                        <div class="pGrid1"><p id="sliderLabel2">0</p></div>
-                        <div class="pGrid2"><p>max</p></div>
-                    </div>
-                    <div class="sliderContainer">
-                        <input
-                            type="range"
-                            min="0"
-                            max="200"
-                            value="1"
-                            class="slider"
-                            id="slider2"
-                        />
-                    </div>
-                </div>
-                <!-- <div class="maxValueContainer">
+        <div class="sectionContainer">
+          <select class="customSelect" id="simOptions">
+            <option value="randomParticle">Random Particle</option>
+            <option value="flocksim">Flock Sim</option>
+            <!-- <option value="particle">Particle</option> -->
+          </select>
+        </div>
+        <div class="sectionContainer noselect">
+          <div class="sectionPadding">
+            <label for="quadTree" class="noselect settingName textlabel"
+              >QuadTree</label
+            >
+            <input
+              type="checkbox"
+              class="custom-checkbox"
+              id="quadtreeValue"
+              name="quadTree"
+              checked
+            />
+          </div>
+        </div>
+        <div class="sectionContainer">
+          <div style="display: inline">
+            <p class="sectionTitle settingName">Particle Counts:</p>
+            <p class="sectionTitle" id="particleCount" style="padding-top:0px">
+              1000
+            </p>
+          </div>
+          <div class="sectionTitle" style="padding-top:0px">
+            <input
+              type="range"
+              min="1"
+              max="5000"
+              value="1000"
+              class="slider"
+              id="pSliderValue"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="particleSettingContainer">
+      <div class="sliderSettingContainer" id="sliderSetting1">
+        <div class="noselect ptSettingName">
+          <p id="setting1">settting name</p>
+        </div>
+        <div class="leftSliderCon">
+          <div class="valueContainer noselect">
+            <div class="pGrid1"><p id="sliderLabel1">0</p></div>
+            <div class="pGrid2"><p>max</p></div>
+          </div>
+          <div class="sliderContainer">
+            <input
+              type="range"
+              min="0"
+              max="200"
+              value="1"
+              class="slider"
+              id="slider1"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="sliderSettingContainer" id="sliderSetting2">
+        <div class="ptSettingName noselect">
+          <p id="setting2">settting name</p>
+        </div>
+        <div class="leftSliderCon">
+          <div class="valueContainer noselect">
+            <div class="pGrid1"><p id="sliderLabel2">0</p></div>
+            <div class="pGrid2"><p>max</p></div>
+          </div>
+          <div class="sliderContainer">
+            <input
+              type="range"
+              min="0"
+              max="200"
+              value="1"
+              class="slider"
+              id="slider2"
+            />
+          </div>
+        </div>
+        <!-- <div class="maxValueContainer">
                         <input type="text" id="maxValue" />
                     </div> -->
-            </div>
-            <div class="sliderSettingContainer" id="sliderSetting3">
-                <div class="ptSettingName noselect">
-                    <p id="setting3">settting name</p>
-                </div>
-                <div class="leftSliderCon">
-                    <div class="valueContainer noselect">
-                        <div class="pGrid1"><p id="sliderLabel3">0</p></div>
-                        <div class="pGrid2"><p>max</p></div>
-                    </div>
-                    <div class="sliderContainer">
-                        <input
-                            type="range"
-                            min="0"
-                            max="200"
-                            value="1"
-                            class="slider"
-                            id="slider3"
-                        />
-                    </div>
-                </div>
-                <!-- <div class="maxValueContainer">
+      </div>
+      <div class="sliderSettingContainer" id="sliderSetting3">
+        <div class="ptSettingName noselect">
+          <p id="setting3">settting name</p>
+        </div>
+        <div class="leftSliderCon">
+          <div class="valueContainer noselect">
+            <div class="pGrid1"><p id="sliderLabel3">0</p></div>
+            <div class="pGrid2"><p>max</p></div>
+          </div>
+          <div class="sliderContainer">
+            <input
+              type="range"
+              min="0"
+              max="200"
+              value="1"
+              class="slider"
+              id="slider3"
+            />
+          </div>
+        </div>
+        <!-- <div class="maxValueContainer">
                             <input type="text" id="maxValue" />
                         </div> -->
-            </div>
-        </div>
-        <div class="displayfps noselect topright">
-            <p id="framerate">00</p>
-            <p>fps</p>
-        </div>
-    </body>
+      </div>
+    </div>
+    <div class="displayfps noselect topright">
+      <p id="framerate">00</p>
+      <p>fps</p>
+    </div>
+  </body>
 </html>
